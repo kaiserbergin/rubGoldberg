@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23722608356298518}
   m_Layer: 0
   m_Name: FloorPlane
-  m_TagString: Grabable
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
