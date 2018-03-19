@@ -3,40 +3,21 @@ using System;
 using System.Collections.Generic;
 
 public class Fan : MonoBehaviour, IItem {
-    public float _fanForceModifier = 5f;
 
-    private List<Collider> others;
-    private Vector3 _force;
+    //Interface Properties
+    public Guid ItemId { get; private set; }
+    public ItemTypes ItemType { get; private set; }
+    public String ItemName { get; set; }
+    public ItemIcon3d ItemIcon3d { get; set; }
 
-    public Guid _itemId { get; private set; }
-    public ItemTypes _itemType { get; private set; }
+    //Public facing setters for editor
+    public ItemIcon3d itemIcon3D;
+    public String itemName;
 
     private void Awake() {
-        _itemId = Guid.NewGuid();
-        _itemType = ItemTypes.FAN;
-    }
-
-    private void Start() {
-        others = new List<Collider>();
-        _force = transform.forward * _fanForceModifier;
-    }
-
-    // Use this for initialization
-    private void FixedUpdate() {
-        foreach(Collider other in others) {
-            Rigidbody _rigidbody = other.attachedRigidbody;
-            _rigidbody.useGravity = false;
-            _rigidbody.AddForce(_force);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        others.Add(other);
-    }
-
-    private void OnTriggerExit(Collider other) {
-        Rigidbody _rigidbody = other.attachedRigidbody;
-        _rigidbody.useGravity = true;
-        others.Remove(other);
+        ItemId = Guid.NewGuid();
+        ItemType = ItemTypes.FAN;
+        ItemName = itemName;
+        ItemIcon3d = itemIcon3D;
     }
 }

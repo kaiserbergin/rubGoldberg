@@ -56,6 +56,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4831459162892790}
+  - component: {fileID: 114977007757622516}
   m_Layer: 0
   m_Name: Anti Gravity Field Generator
   m_TagString: Untagged
@@ -221,3 +222,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1401f0e2c93a4ae41b66b638d86b20ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114977007757622516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848069420124566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb770dba853b99f49b22fb15e72f3088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon3D: {fileID: 114666575008992274, guid: 4ad94405f0072a44494b150ca87ad6fc,
+    type: 2}
+  itemName: ANIT GRAV FIELD

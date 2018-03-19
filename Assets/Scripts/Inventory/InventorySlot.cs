@@ -1,17 +1,19 @@
-﻿public class InventorySlot {
-    public IItem _item;
-    public int _count;
+﻿using UnityEngine;
+
+public class InventorySlot : MonoBehaviour {
+    public IItem item;
+    public int count;
 
     public InventorySlot(IItem item, int count) {
-        _item = item;
-        _count = count;
+        this.item = item;
+        this.count = count;
     }
 
     public void AddCount(int count) {
-        _count += count;
+        this.count += count;
     }
 
     public void RemoveCount(int count) {
-        _count -= count;
+        this.count -= count;
     }
 }

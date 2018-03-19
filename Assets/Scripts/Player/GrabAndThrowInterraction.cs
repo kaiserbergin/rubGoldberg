@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GrabAndThrowInterraction : MonoBehaviour {
     private SteamVR_TrackedObject _trackedObject;
-    private SteamVR_Controller.Device _steamController;
+    private SteamVR_Controller.Device device;
 
-    public float _throwForce = 1.5f;
-    public ushort _hapticFeedbackPulseForGrab = 2000;
+    public float throwForceModifier = 1.5f;
+    public ushort hapticFeedbackPulseForGrab = 2000;
 
     // Use this for initialization
     void Start() {
@@ -14,14 +14,14 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     }
 
     private void Update() {
-        _steamController = SteamVR_Controller.Input((int)_trackedObject.index);
+        device = SteamVR_Controller.Input((int)_trackedObject.index);
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.CompareTag("Throwable")) {
-            if(_steamController.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
+            if(device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
                 ThrowObject(other);
-            } else if (_steamController.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
+            } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
                 GrabObject(other);
             }
         }
@@ -30,14 +30,14 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     private void GrabObject(Collider other) {
         other.transform.SetParent(gameObject.transform);
         other.GetComponent<Rigidbody>().isKinematic = true;
-        _steamController.TriggerHapticPulse(_hapticFeedbackPulseForGrab);
+        device.TriggerHapticPulse(hapticFeedbackPulseForGrab);
     }
 
     private void ThrowObject(Collider other) {
         other.transform.SetParent(null);
         Rigidbody rb = other.GetComponent<Rigidbody>();
         rb.isKinematic = false;
-        rb.velocity = _steamController.velocity * _throwForce;
-        rb.angularVelocity = _steamController.angularVelocity;
+        rb.velocity = device.velocity * throwForceModifier;
+        rb.angularVelocity = device.angularVelocity;
     }
 }

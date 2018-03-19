@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public enum ItemTypes {
     BALL,
@@ -9,6 +10,8 @@ public enum ItemTypes {
     ANTI_GRAV_FIELD_GEN
 }
 public interface IItem {
-    Guid _itemId { get; }
-    ItemTypes _itemType { get; }
+    Guid ItemId { get; }
+    ItemTypes ItemType { get; }
+    String ItemName { get; set; }
+    ItemIcon3d ItemIcon3d { get; set; }
 }

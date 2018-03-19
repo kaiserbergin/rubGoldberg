@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4987226506005914, guid: b0e5d178f037a704c8f8ce142dbacd0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.53138
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 4987226506005914, guid: b0e5d178f037a704c8f8ce142dbacd0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -371,8 +371,7 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 270
       objectReference: {fileID: 0}
-    - target: {fileID: 114899710744557362, guid: b0e5d178f037a704c8f8ce142dbacd0c,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: _fanForceModifier
       value: 30
       objectReference: {fileID: 0}

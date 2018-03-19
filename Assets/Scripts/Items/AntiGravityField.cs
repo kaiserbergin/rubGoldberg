@@ -20,11 +20,17 @@ public class AntiGravityField : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         others.Add(other);
+        if(!other.gameObject.CompareTag("Throwable")) {
+            other.transform.parent.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
         Rigidbody _rigidbody = other.attachedRigidbody;
         _rigidbody.useGravity = true;
+        if (!other.gameObject.CompareTag("Throwable")) {
+            other.transform.parent.GetComponent<Rigidbody>().isKinematic = false;
+        }
         others.Remove(other);
     }
 }

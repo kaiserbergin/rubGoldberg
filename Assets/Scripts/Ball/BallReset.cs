@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BallReset : MonoBehaviour {
 
-    private Vector3 _initialPosition;
-    private Rigidbody _rigidbody;
+    private Vector3 initialPosition;
+    private Rigidbody rb;
 
     private void Start() {
-        _initialPosition = gameObject.transform.position;
-        _rigidbody = GetComponent<Rigidbody>();
+        initialPosition = gameObject.transform.position;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -19,10 +19,10 @@ public class BallReset : MonoBehaviour {
     }
 
     private void ResetBall() {
-        gameObject.transform.position = _initialPosition;
+        gameObject.transform.position = initialPosition;
 
         gameObject.transform.rotation = Quaternion.identity;
-        _rigidbody.velocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }
