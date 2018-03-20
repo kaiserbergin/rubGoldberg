@@ -13,10 +13,13 @@ public class Trampoline : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void Awake() {
-        ItemId = Guid.NewGuid();
-        ItemType = ItemTypes.TRAMPOLINE;
+    private void OnValidate() {
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
+        ItemType = ItemTypes.TRAMPOLINE;
+    }
+
+    private void Awake() {
+        ItemId = Guid.NewGuid();
     }
 }

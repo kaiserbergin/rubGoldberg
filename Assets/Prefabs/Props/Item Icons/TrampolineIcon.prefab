@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 33211752370286752}
   - component: {fileID: 23968892877017904}
   - component: {fileID: 114893949408196626}
+  - component: {fileID: 114979564627608584}
   m_Layer: 0
   m_Name: 3d Icon
   m_TagString: Grabable
@@ -78,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4295944781752914
 Transform:
   m_ObjectHideFlags: 1
@@ -99,8 +100,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611006520108200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -2.4095016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children:
   - {fileID: 4295944781752914}
   - {fileID: 224936173422712480}
@@ -214,6 +215,18 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 50
 --- !u!114 &114893949408196626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529426493130714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9cc72dd698f84419b1a873d54ab155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationTimeInSeconds: 30
+--- !u!114 &114979564627608584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

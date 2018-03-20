@@ -12,10 +12,13 @@ public class Ramp : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void Awake() {
-        ItemId = Guid.NewGuid();
-        ItemType = ItemTypes.RAMP;
+    private void OnValidate() {
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
+        ItemType = ItemTypes.RAMP;
+    }
+
+    private void Awake() {
+        ItemId = Guid.NewGuid();
     }
 }

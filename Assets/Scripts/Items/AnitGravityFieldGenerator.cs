@@ -12,10 +12,13 @@ public class AnitGravityFieldGenerator : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void Awake() {
-        ItemId = Guid.NewGuid();
-        ItemType = ItemTypes.ANTI_GRAV_FIELD_GEN;
+    private void OnValidate() {
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
+        ItemType = ItemTypes.ANTI_GRAV_FIELD_GEN;
+    }
+
+    private void Awake() {
+        ItemId = Guid.NewGuid();
     }
 }

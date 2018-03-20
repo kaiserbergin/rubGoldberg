@@ -12,10 +12,13 @@ public class MetalPlank : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void Awake() {
-        ItemId = Guid.NewGuid();
-        ItemType = ItemTypes.METAL_PLANK;
+    private void OnValidate() {
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
+        ItemType = ItemTypes.METAL_PLANK;
+    }
+
+    private void Awake() {
+        ItemId = Guid.NewGuid();
     }
 }

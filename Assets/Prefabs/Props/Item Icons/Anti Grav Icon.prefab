@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1214613624721006
 GameObject:
   m_ObjectHideFlags: 1
@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4134101297122188}
   - component: {fileID: 114522847157892802}
+  - component: {fileID: 114338578802189584}
   m_Layer: 0
   m_Name: 3d Icon
   m_TagString: Grabable
@@ -177,8 +178,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013957510662154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -2.4095016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children:
   - {fileID: 4134101297122188}
   - {fileID: 224330591239788024}
@@ -334,6 +335,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 50
+--- !u!114 &114338578802189584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330301628534122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9cc72dd698f84419b1a873d54ab155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationTimeInSeconds: 10
 --- !u!114 &114522847157892802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,6 +392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb770dba853b99f49b22fb15e72f3088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIcon3D: {fileID: 0}
+  itemName: 
 --- !u!222 &222100119225398004
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -14,10 +14,13 @@ public class Fan : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void Awake() {
-        ItemId = Guid.NewGuid();
-        ItemType = ItemTypes.FAN;
+    private void OnValidate() {
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
+        ItemType = ItemTypes.FAN;
+    }
+
+    private void Awake() {
+        ItemId = Guid.NewGuid();
     }
 }

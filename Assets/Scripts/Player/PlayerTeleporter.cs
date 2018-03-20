@@ -14,6 +14,9 @@ public class PlayerTeleporter : Teleporter {
     public SteamVR_TrackedObject trackedObject;
     public SteamVR_Controller.Device controllerDevice;
 
+    [Header("Dependencies")]
+    public ItemMenu itemMenu;
+
     private Vector3 teleportationCoords;
 
 
@@ -26,7 +29,12 @@ public class PlayerTeleporter : Teleporter {
     // Update is called once per frame
     void Update() {
         controllerDevice = SteamVR_Controller.Input((int)trackedObject.index);
+        if(!itemMenu.isVisible) {
+            HandleTeleporterInput();
+        }        
+    }
 
+    void HandleTeleporterInput() {
         if (controllerDevice.GetPress(SteamVR_Controller.ButtonMask.Trigger)) {
             teleportationDirectionIndicator.gameObject.SetActive(true);
             teleportationLocationMarker.SetActive(true);

@@ -2,14 +2,29 @@
 using System.Collections;
 
 public class MenuInterractionTest : MonoBehaviour {
+    
+    public ItemMenu itemMenu;
+    public InventoryManagerSetUp inventoryManagerSetUp;
 
-    // Use this for initialization
-    void Start() {
+    private bool spawnStarted;
 
+    private void Start() {
+        inventoryManagerSetUp.InitializeInventory();
+        itemMenu.InitializeItemMenu();        
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
+        if (!spawnStarted) {
+            StartCoroutine(WaitTime());
+            spawnStarted = true;
+        }        
+    }
 
+    IEnumerator WaitTime() {
+        for (int i = 0; i < itemMenu.inventoryManager.inventorySlots.Count; i++) {
+            itemMenu.SpawnItem();
+            itemMenu.ViewNextItem();
+            yield return new WaitForSeconds(2.5f);
+        }
     }
 }

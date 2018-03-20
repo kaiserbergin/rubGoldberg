@@ -15,18 +15,15 @@ public class ItemMenu : MonoBehaviour {
     //Pulbic facing info
     public bool isVisible = false;
 
-    private void Awake() {
-        itemIcons = new List<ItemIcon3d>();
-    }
-
     public void InitializeItemMenu() {
+        itemIcons = itemIcons ?? new List<ItemIcon3d>();
         if (inventoryManager != null) {
             foreach (InventorySlot inventorySlot in inventoryManager.inventorySlots) {
                 IItem item = inventorySlot.item;
                 ItemIcon3d itemIcon = Instantiate(item.ItemIcon3d) as ItemIcon3d;
                 itemIcon.gameObject.SetActive(false);
                 itemIcon.transform.SetParent(transform);
-                UpdateIconText(itemIcon);
+                UpdateIconText(inventorySlot, itemIcon);
                 itemIcons.Add(itemIcon);
             }
         }
@@ -34,12 +31,13 @@ public class ItemMenu : MonoBehaviour {
 
     public void OpenMenu() {  
         itemIcons[selectedInventorySlot].gameObject.SetActive(true);
-        UpdateIconText(itemIcons[selectedInventorySlot]);
+        UpdateIconText(inventoryManager.inventorySlots[selectedInventorySlot], itemIcons[selectedInventorySlot]);
         isVisible = true;
     }
 
     public void CloseMenu() {
         itemIcons[selectedInventorySlot].gameObject.SetActive(false);
+        UpdateIconText(inventoryManager.inventorySlots[selectedInventorySlot], itemIcons[selectedInventorySlot]);
         isVisible = false;
     }
 
@@ -63,8 +61,17 @@ public class ItemMenu : MonoBehaviour {
         itemIcons[selectedInventorySlot].gameObject.SetActive(true);
     }
 
-    public void UpdateIconText(ItemIcon3d itemIcon) {
+    public void SpawnItem() {
+        InventorySlot inventorySlot = inventoryManager.inventorySlots[selectedInventorySlot];
+        if (inventorySlot.count > 0) {
+            Instantiate(((MonoBehaviour)inventorySlot.item).gameObject, transform.parent.position, Quaternion.Euler(0, 0, 0));
+            inventorySlot.count--;
+            UpdateIconText(inventorySlot, itemIcons[selectedInventorySlot]);
+        }
+    }
+
+    public void UpdateIconText(InventorySlot inventorySlot, ItemIcon3d itemIcon) {
         Text iconText = itemIcon.GetComponentInChildren<Text>();
-        iconText.text = $"{inventoryManager.inventorySlots[selectedInventorySlot].item.ItemName}:  {inventoryManager.inventorySlots[selectedInventorySlot].count}x";
+        iconText.text = $"{inventorySlot.item.ItemName}:  {inventorySlot.count}x";
     }
 }
