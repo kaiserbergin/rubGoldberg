@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54188503513773962}
   - component: {fileID: 135689786598070596}
   - component: {fileID: 114389749625942732}
+  - component: {fileID: 114709924874885806}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Throwable
@@ -111,6 +112,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0897ddb97fb413e43bf260b6a72f0e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114709924874885806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755790491928946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2489bc4ce26b58547a406d896c25a871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon3D: {fileID: 0}
+  itemName: BALL
 --- !u!135 &135689786598070596
 SphereCollider:
   m_ObjectHideFlags: 1

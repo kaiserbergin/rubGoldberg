@@ -39,9 +39,8 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     }
 
     private void GrabObject(Collider other) {
-        heldObject = other.transform;
-        heldObject.SetParent(gameObject.transform);
-        Rigidbody rb = GetRigidbody(heldObject);
+        other.transform.SetParent(gameObject.transform);
+        Rigidbody rb = other.transform.GetComponent<Rigidbody>();
         if(rb != null) {
             rb.isKinematic = true;
         }
@@ -49,24 +48,22 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     }
 
     private void ThrowObject(Collider other) {
-        heldObject.SetParent(null);
-        Rigidbody rb = GetRigidbody(heldObject);
+        other.transform.SetParent(null);
+        Rigidbody rb = other.transform.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.velocity = device.velocity * throwForceModifier;
         rb.angularVelocity = device.angularVelocity;
-        heldObject = null;
     }
 
     private void DropObject(Collider other) {
-        heldObject.SetParent(null);
-        Rigidbody rb = GetRigidbody(heldObject);
+        other.transform.SetParent(null);
+        Rigidbody rb = other.transform.GetComponent<Rigidbody>();
         if(rb != null) {
             rb.isKinematic = false;
-            heldObject = null;
         }
     }
 
     private Rigidbody GetRigidbody(Transform transform) {
-        return heldObject.GetComponent<Rigidbody>() ?? heldObject.parent.GetComponent<Rigidbody>();
+        return transform.GetComponent<Rigidbody>() ?? heldObject.parent.GetComponent<Rigidbody>();
     }
 }

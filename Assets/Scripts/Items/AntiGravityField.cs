@@ -4,23 +4,38 @@ using System.Collections.Generic;
 
 public class AntiGravityField : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider other) {
-        Rigidbody rb = getRigidBody(other);
-        if (other.gameObject.CompareTag("Grabable")) {
-            rb.isKinematic = true;
+    private void OnTriggerStay(Collider other) {
+        Rigidbody rb = other.attachedRigidbody;
+        if (ShouldBeAffected(other, rb)) {
+            if (IsGrabable(other)) {
+                rb.isKinematic = true;
+            }
+            rb.useGravity = false;
         }
-        rb.useGravity = false;
+       
     }
 
     private void OnTriggerExit(Collider other) {
-        Rigidbody rb = getRigidBody(other);
-        if (other.gameObject.CompareTag("Grabable")) {
-            rb.isKinematic = false;
+        Rigidbody rb = other.attachedRigidbody;
+        if (ShouldBeAffected(other, rb)) {
+            if (IsGrabable(other)) {
+                rb.isKinematic = false;
+            }
         }
-        rb.useGravity = true;
+        if (rb != null) rb.useGravity = true;
     }
 
-    private Rigidbody getRigidBody(Collider other) {
-        return other.attachedRigidbody ?? other.transform.parent.GetComponent<Rigidbody>();
+    private bool ShouldBeAffected(Collider other, Rigidbody rb) {
+        return (IsGrabable(other) || IsThrowable(other)) && !IsHeld(other) && rb != null;
+    }
+
+    private bool IsGrabable(Collider other) {
+        return other.gameObject.CompareTag("Grabable");
+    }
+    private bool IsThrowable(Collider other) {
+        return other.gameObject.CompareTag("Throwable");
+    }
+    private bool IsHeld(Collider other) {
+        return other.transform.root.CompareTag("Player");
     }
 }
