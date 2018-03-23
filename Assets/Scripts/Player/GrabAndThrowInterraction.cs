@@ -29,10 +29,8 @@ public class GrabAndThrowInterraction : MonoBehaviour {
         }
         if (other.transform.CompareTag("Grabable")) {
             if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
-                Debug.Log($"dropping {other.transform.name}");
                 DropObject(other);
             } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
-                Debug.Log($"grabbing {other.transform.name}");
                 GrabObject(other);
             }
         }
