@@ -11,7 +11,6 @@ public class FanForceApplier : MonoBehaviour {
 
     private void Start() {
         others = new List<Collider>();
-        force = transform.forward * fanForceModifier;
     }
 
     // Use this for initialization
@@ -19,7 +18,7 @@ public class FanForceApplier : MonoBehaviour {
         foreach (Collider other in others) {
             Rigidbody _rigidbody = other.attachedRigidbody;
             _rigidbody.useGravity = false;
-            _rigidbody.AddForce(force);
+            _rigidbody.AddForce(transform.forward * fanForceModifier);
         }
     }
 

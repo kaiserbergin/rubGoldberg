@@ -52,7 +52,6 @@ public class PlayerTeleporter : Teleporter {
                 RaycastHit groundRay;
                 if (Physics.Raycast(teleportationCoords, -Vector3.up, out groundRay, 17, telportationSurfaceMask)) {
                     teleportationCoords = groundRay.point;
-
                 }
                 teleportationDirectionIndicator.SetPosition(1, transform.forward * 15 + transform.position);
                 //aimer position

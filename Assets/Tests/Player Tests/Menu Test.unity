@@ -165,7 +165,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e79e130b1eec83b42b51a1f4902126b9, type: 2}
   m_IsPrefabParent: 0
---- !u!43 &22539499
+--- !u!43 &29706308
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -464,49 +464,12 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1930560208}
+      objectReference: {fileID: 1864116431}
     - target: {fileID: 33957734251025528, guid: c2597e89bb240b940bda69d51f134ecc,
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 22539499}
-    - target: {fileID: 114888816441988808, guid: c2597e89bb240b940bda69d51f134ecc,
-        type: 2}
-      propertyPath: itemMenu
-      value: 
-      objectReference: {fileID: 1541237151}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4798785792862036, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086059910765130, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 29706308}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2597e89bb240b940bda69d51f134ecc, type: 2}
   m_IsPrefabParent: 0
@@ -587,7 +550,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!21 &1930560208
+--- !u!21 &1864116431
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0

@@ -20,9 +20,8 @@ public class ItemMenu : MonoBehaviour {
         if (inventoryManager != null) {
             foreach (InventorySlot inventorySlot in inventoryManager.inventorySlots) {
                 IItem item = inventorySlot.item;
-                ItemIcon3d itemIcon = Instantiate(item.ItemIcon3d) as ItemIcon3d;
+                ItemIcon3d itemIcon = Instantiate(item.ItemIcon3d, transform, false) as ItemIcon3d;
                 itemIcon.gameObject.SetActive(false);
-                itemIcon.transform.SetParent(transform);
                 UpdateIconText(inventorySlot, itemIcon);
                 itemIcons.Add(itemIcon);
             }
