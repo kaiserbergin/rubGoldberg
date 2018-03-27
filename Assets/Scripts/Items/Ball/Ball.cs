@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour, IItem {
 
     //Public facing setters for editor
     public ItemIcon3d itemIcon3D;
-    public String itemName;
+    public String itemName;    
 
     public void Initialize() { 
         ItemName = itemName;

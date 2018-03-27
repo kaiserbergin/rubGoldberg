@@ -26,7 +26,7 @@ public class BallReset : MonoBehaviour {
         transform.SetParent(null);
         transform.position = initialPosition;
         transform.rotation = Quaternion.identity;
-        rb.isKinematic = false;
+        rb.isKinematic = true;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
