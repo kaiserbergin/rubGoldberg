@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void OnValidate() {
+    public void Initialize() { 
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
         ItemType = ItemTypes.BALL;

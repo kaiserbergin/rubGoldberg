@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour {
         if (matchedInventorySlotIndex >= 0) {
             inventorySlots[matchedInventorySlotIndex].AddCount(1);
         } else {
+            item.Initialize();
             inventorySlots.Add(new InventorySlot(item, 1));
         }
     }
@@ -19,6 +20,7 @@ public class InventoryManager : MonoBehaviour {
         if (matchedInventorySlotIndex >= 0) {
             inventorySlots[matchedInventorySlotIndex].AddCount(count);
         } else {
+            item.Initialize();
             inventorySlots.Add(new InventorySlot(item, count));
         }
     }

@@ -12,7 +12,7 @@ public class AnitGravityFieldGenerator : MonoBehaviour, IItem {
     public ItemIcon3d itemIcon3D;
     public String itemName;
 
-    private void OnValidate() {
+    public void Initialize() {
         ItemName = itemName;
         ItemIcon3d = itemIcon3D;
         ItemType = ItemTypes.ANTI_GRAV_FIELD_GEN;

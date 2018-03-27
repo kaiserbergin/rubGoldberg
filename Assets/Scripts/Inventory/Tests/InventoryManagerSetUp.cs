@@ -22,10 +22,10 @@ public class InventoryManagerSetUp : MonoBehaviour {
 
     // Use this for initialization
     public void InitializeInventory() {
-        inventoryManager.AddItem(trampoline, trampolineCount);
-        inventoryManager.AddItem(ramp, rampCount);
-        inventoryManager.AddItem(fan, fanCount);
-        inventoryManager.AddItem(metalPlank, metalPlankCount);
-        inventoryManager.AddItem(anitGravityFieldGenerator, anitGravityFieldGeneratorCount);
+        if(trampolineCount > 0) inventoryManager.AddItem(trampoline, trampolineCount);
+        if(rampCount > 0) inventoryManager.AddItem(ramp, rampCount);
+        if(fanCount > 0) inventoryManager.AddItem(fan, fanCount);
+        if(metalPlankCount > 0) inventoryManager.AddItem(metalPlank, metalPlankCount);
+        if(anitGravityFieldGeneratorCount > 0) inventoryManager.AddItem(anitGravityFieldGenerator, anitGravityFieldGeneratorCount);
     }
 }

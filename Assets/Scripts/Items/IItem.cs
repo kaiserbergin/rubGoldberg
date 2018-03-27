@@ -14,4 +14,6 @@ public interface IItem {
     ItemTypes ItemType { get; }
     String ItemName { get; set; }
     ItemIcon3d ItemIcon3d { get; set; }
+
+    void Initialize();
 }

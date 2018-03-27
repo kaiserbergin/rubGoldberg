@@ -8,6 +8,9 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     public float throwForceModifier = 1.5f;
     public ushort hapticFeedbackPulseForGrab = 2000;
 
+    public BallReset ballReset;
+    public bool canThrowBall = false;
+
     private Transform heldObject;
 
     // Use this for initialization
@@ -22,7 +25,11 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.CompareTag("Throwable")) {
             if(device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
-                ThrowObject(other);
+                if(canThrowBall) {
+                    ThrowObject(other);
+                } else {
+                    ballReset.ResetBall();
+                }
             } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
                 GrabObject(other);
             }

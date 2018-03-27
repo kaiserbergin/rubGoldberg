@@ -11,7 +11,7 @@ public class BallReset : MonoBehaviour {
     public List<Star> stars;
 
     private void Start() {
-        initialPosition = gameObject.transform.position;
+        initialPosition = transform.position;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -22,10 +22,11 @@ public class BallReset : MonoBehaviour {
         }
     }
 
-    private void ResetBall() {
-        gameObject.transform.position = initialPosition;
-
-        gameObject.transform.rotation = Quaternion.identity;
+    public void ResetBall() {
+        transform.SetParent(null);
+        transform.position = initialPosition;
+        transform.rotation = Quaternion.identity;
+        rb.isKinematic = false;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
