@@ -5,10 +5,10 @@ This project is part of [Udacity](https://www.udacity.com "Udacity - Be in deman
 ## Versions
 - Unity 2017.2.0f3
 
-##Intended for use with Oculus
+## Intended for use with Oculus
 Created with focus on Oculus as I don't own a Vive.
 
-##Cool Stuff
+## Cool Stuff
 - Created particle effects for teleportation markers, walls, ball trails, and fan wind.  Wind uses default particles, but the teleportation markers and trails on the boundaries were created by me using aseprite
 - Added additional cameras which are viewable on the left controller's menu that help you see where your ball is traveling through the level
 - Each level provides the required items to successfully complete the level
