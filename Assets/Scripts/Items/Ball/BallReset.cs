@@ -16,7 +16,7 @@ public class BallReset : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.tag.Equals("ground", System.StringComparison.InvariantCultureIgnoreCase)) {
+        if (collision.gameObject.tag.Equals("ground", System.StringComparison.InvariantCultureIgnoreCase)) {
             ResetBall();
             ResetStars();
         }
@@ -32,7 +32,7 @@ public class BallReset : MonoBehaviour {
     }
 
     private void ResetStars() {
-        foreach(Star star in stars) {
+        foreach (Star star in stars) {
             star.gameObject.SetActive(true);
         }
     }

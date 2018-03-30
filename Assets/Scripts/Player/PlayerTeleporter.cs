@@ -9,13 +9,13 @@ public class PlayerTeleporter : Teleporter {
     [Header("Settings")]
     public GameObject player;
     public LayerMask telportationSurfaceMask;
+    public LayerMask boundaryMask;
+    public LayerMask platformMask;
 
     [Header("Device")]
     public SteamVR_TrackedObject trackedObject;
     public SteamVR_Controller.Device controllerDevice;
 
-    [Header("Dependencies")]
-    public ItemMenu itemMenu;
 
     private Vector3 teleportationCoords;
 
@@ -29,9 +29,7 @@ public class PlayerTeleporter : Teleporter {
     // Update is called once per frame
     void Update() {
         controllerDevice = SteamVR_Controller.Input((int)trackedObject.index);
-        if(!itemMenu.isVisible) {
-            HandleTeleporterInput();
-        }        
+        HandleTeleporterInput();
     }
 
     void HandleTeleporterInput() {
@@ -42,21 +40,17 @@ public class PlayerTeleporter : Teleporter {
             teleportationDirectionIndicator.SetPosition(0, gameObject.transform.position);
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 15, telportationSurfaceMask)) {
+            //If Raycast hits boundary
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 15, platformMask)) {
+                teleportationCoords = PlatformCast(hit.point);
+            } else if (Physics.Raycast(transform.position, transform.forward, out hit, 15, boundaryMask)) {
+                teleportationCoords = BoundaryCast(hit.point);
+            } else if (Physics.Raycast(transform.position, transform.forward, out hit, 15, telportationSurfaceMask)) {
                 teleportationCoords = hit.point;
                 teleportationDirectionIndicator.SetPosition(1, teleportationCoords);
-                //aimer position
                 teleportationLocationMarker.transform.position = teleportationCoords;
             } else {
-                teleportationCoords = transform.forward * 15 + transform.position;
-                RaycastHit groundRay;
-                if (Physics.Raycast(teleportationCoords, -Vector3.up, out groundRay, 17, telportationSurfaceMask)) {
-                    teleportationCoords = groundRay.point;
-                }
-                teleportationDirectionIndicator.SetPosition(1, transform.forward * 15 + transform.position);
-                //aimer position
-                teleportationLocationMarker.transform.position = teleportationCoords;
-
+                teleportationCoords = GroundCast();
             }
         }
         if (controllerDevice.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
@@ -64,5 +58,41 @@ public class PlayerTeleporter : Teleporter {
             teleportationLocationMarker.SetActive(false);
             player.transform.position = teleportationCoords;
         }
+    }
+
+    private Vector3 BoundaryCast(Vector3 hitPoint) {
+        RaycastHit groundRay;
+        Vector3 teleportationCoords = hitPoint;
+        if (Physics.Raycast(hitPoint, -Vector3.up, out groundRay, 100, telportationSurfaceMask)) {
+            teleportationCoords = groundRay.point;
+        }
+        teleportationDirectionIndicator.SetPosition(1, hitPoint);
+        teleportationLocationMarker.transform.position = teleportationCoords;
+
+        return teleportationCoords;
+    }
+
+    private Vector3 GroundCast() {
+        teleportationCoords = transform.forward * 15 + transform.position;
+        RaycastHit groundRay;
+        if (Physics.Raycast(teleportationCoords, -Vector3.up, out groundRay, 100, telportationSurfaceMask)) {
+            teleportationCoords = groundRay.point;
+        }
+        teleportationDirectionIndicator.SetPosition(1, transform.forward * 15 + transform.position);
+        teleportationLocationMarker.transform.position = teleportationCoords;
+
+        return teleportationCoords;
+    }
+
+    private Vector3 PlatformCast(Vector3 hitPoint) {
+        RaycastHit upwardsRay;
+        Vector3 teleportationCoords = hitPoint;
+        if (Physics.Raycast(hitPoint, Vector3.up, out upwardsRay, 100, telportationSurfaceMask)) {
+            teleportationCoords = upwardsRay.point;
+        }
+        teleportationDirectionIndicator.SetPosition(1, hitPoint);
+        teleportationLocationMarker.transform.position = teleportationCoords;
+
+        return teleportationCoords;
     }
 }

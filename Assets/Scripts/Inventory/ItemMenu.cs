@@ -63,7 +63,7 @@ public class ItemMenu : MonoBehaviour {
     public void SpawnItem() {
         InventorySlot inventorySlot = inventoryManager.inventorySlots[selectedInventorySlot];
         if (inventorySlot.count > 0) {
-            Instantiate(((MonoBehaviour)inventorySlot.item).gameObject, transform.parent.position, Quaternion.Euler(0, 0, 0));
+            Instantiate(((MonoBehaviour)inventorySlot.item).gameObject, transform.parent.position, Quaternion.Euler(((MonoBehaviour)inventorySlot.item).transform.rotation.eulerAngles));
             inventorySlot.count--;
             UpdateIconText(inventorySlot, itemIcons[selectedInventorySlot]);
         }

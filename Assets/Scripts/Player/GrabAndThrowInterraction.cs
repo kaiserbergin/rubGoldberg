@@ -13,6 +13,9 @@ public class GrabAndThrowInterraction : MonoBehaviour {
 
     private Transform heldObject;
 
+    [Header("Dependencies")]
+    public ItemMenu itemMenu;
+
     // Use this for initialization
     void Start() {
         _trackedObject = GetComponent<SteamVR_TrackedObject>();
@@ -23,22 +26,24 @@ public class GrabAndThrowInterraction : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.gameObject.CompareTag("Throwable")) {
-            if(device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
-                if(canThrowBall) {
-                    ThrowObject(other);
-                } else {
-                    ballReset.ResetBall();
+        if(!itemMenu.isVisible) {
+            if (other.gameObject.CompareTag("Throwable")) {
+                if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
+                    if (canThrowBall) {
+                        ThrowObject(other);
+                    } else {
+                        ballReset.ResetBall();
+                    }
+                } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
+                    GrabObject(other);
                 }
-            } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
-                GrabObject(other);
             }
-        }
-        if (other.transform.CompareTag("Grabable")) {
-            if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
-                DropObject(other);
-            } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
-                GrabObject(other);
+            if (other.transform.CompareTag("Grabable")) {
+                if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
+                    DropObject(other);
+                } else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
+                    GrabObject(other);
+                }
             }
         }
     }
