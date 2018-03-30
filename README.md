@@ -16,3 +16,7 @@ Created with focus on Oculus as I don't own a Vive.
 - Teleporter modified to detect collision with level boundaries and set tp location on the floor below the boundary
 
 A lot of the development was done during streams which can be viewed at: https://www.twitch.tv/kaiserbergin/videos/all - but there's like 18 hours of footage, and I still left out a few sessions.  So maybe... don't watch them, just appreciate that they exist. 
+
+## Credits:
+
+Music by FM-84
