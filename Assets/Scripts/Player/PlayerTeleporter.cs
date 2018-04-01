@@ -42,15 +42,15 @@ public class PlayerTeleporter : Teleporter {
 
             //If Raycast hits boundary
             if (Physics.Raycast(transform.position, transform.forward, out hit, 15, platformMask)) {
-                teleportationCoords = PlatformCast(hit.point);
+                teleportationCoords = PlatformCast(hit.point, player.transform.position);
             } else if (Physics.Raycast(transform.position, transform.forward, out hit, 15, boundaryMask)) {
-                teleportationCoords = BoundaryCast(hit.point);
+                teleportationCoords = BoundaryCast(hit.point, player.transform.position);
             } else if (Physics.Raycast(transform.position, transform.forward, out hit, 15, telportationSurfaceMask)) {
                 teleportationCoords = hit.point;
                 teleportationDirectionIndicator.SetPosition(1, teleportationCoords);
                 teleportationLocationMarker.transform.position = teleportationCoords;
             } else {
-                teleportationCoords = GroundCast();
+                teleportationCoords = GroundCast(player.transform.position);
             }
         }
         if (controllerDevice.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) {
@@ -60,9 +60,9 @@ public class PlayerTeleporter : Teleporter {
         }
     }
 
-    private Vector3 BoundaryCast(Vector3 hitPoint) {
+    private Vector3 BoundaryCast(Vector3 hitPoint, Vector3 currentPosition) {
         RaycastHit groundRay;
-        Vector3 teleportationCoords = hitPoint;
+        Vector3 teleportationCoords = currentPosition;
         if (Physics.Raycast(hitPoint, -Vector3.up, out groundRay, 100, telportationSurfaceMask)) {
             teleportationCoords = groundRay.point;
         }
@@ -72,8 +72,8 @@ public class PlayerTeleporter : Teleporter {
         return teleportationCoords;
     }
 
-    private Vector3 GroundCast() {
-        teleportationCoords = transform.forward * 15 + transform.position;
+    private Vector3 GroundCast(Vector3 currentPosition) {
+        teleportationCoords = currentPosition;
         RaycastHit groundRay;
         if (Physics.Raycast(teleportationCoords, -Vector3.up, out groundRay, 100, telportationSurfaceMask)) {
             teleportationCoords = groundRay.point;
@@ -84,9 +84,9 @@ public class PlayerTeleporter : Teleporter {
         return teleportationCoords;
     }
 
-    private Vector3 PlatformCast(Vector3 hitPoint) {
+    private Vector3 PlatformCast(Vector3 hitPoint, Vector3 currentPosition) {
         RaycastHit upwardsRay;
-        Vector3 teleportationCoords = hitPoint;
+        Vector3 teleportationCoords = currentPosition;
         if (Physics.Raycast(hitPoint, Vector3.up, out upwardsRay, 100, telportationSurfaceMask)) {
             teleportationCoords = upwardsRay.point;
         }

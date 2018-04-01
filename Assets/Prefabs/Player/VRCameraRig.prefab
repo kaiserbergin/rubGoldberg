@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 4244986813099044}
   - component: {fileID: 114235352869200470}
   m_Layer: 0
-  m_Name: XRRigs
+  m_Name: VRCameraRig
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4087483263806646}
   - component: {fileID: 33919539749465452}
-  - component: {fileID: 64389734518831282}
   - component: {fileID: 23961816252296266}
   - component: {fileID: 114675424515474624}
   m_Layer: 11
@@ -283,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1159781523795008
 GameObject:
   m_ObjectHideFlags: 1
@@ -2157,20 +2156,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!64 &64389734518831282
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1124094967690824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65036986618152244
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2472,7 +2457,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.025
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
